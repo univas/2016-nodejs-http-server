@@ -1,13 +1,20 @@
 "use strict"
 
 const http = require('http')
-const server = http.createServer(function onRequest(request, response) {
+const host = 'localhost'
+const port = 9000
+
+http
+    .createServer(onRequest)
+    .listen(port, onStart)
+
+function onRequest(request, response) {
     console.log('Request for: ' + request.url)
-    response.statusCode = 200
+    response.statusCode = 500
     response.setHeader('Content-Type', 'text/plain')
     response.end('Hello World')
-})
+}
 
-server.listen('9000', function started() {
-    console.log('Server started at http://localhost:9000')
-})
+function onStart() {
+    console.log(`Server started at http://${host}:${port}`)
+}
