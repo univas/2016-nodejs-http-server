@@ -10,7 +10,7 @@ http
 
 function onRequest(request, response) {
     console.log('Request for: ' + request.url)
-    response.statusCode = 500
+    response.statusCode = 200
     response.setHeader('Content-Type', 'text/plain')
     response.end('Hello World')
 }
