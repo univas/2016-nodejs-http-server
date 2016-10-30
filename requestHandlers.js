@@ -2,20 +2,21 @@
 
 const shellCommand = require("child_process").exec
 
-function page1() {
-    console.log('Page 1 requested')
+function page1(response) {
+    console.log('Request handler "Page 1" was called')
 
-    let content = "empty"
-    shellCommand("ls -lah", function onReturn (error, stdout, stderr) {
-        content = stdout
-        console.log(stdout)
+    shellCommand("ls -lah", function onReturn(error, stdout, stderr) {
+        response.statusCode = 404
+        response.setHeader("Content-Type", "text/plain")
+        response.write(stdout)
+        response.end()
     })
-    return content
 }
 
-function page2() {
-    console.log('Page 2 requested')
-    return "Page 2"
+function page2(response) {
+    console.log('Request handler "Page 2" was called')
+    response.write("Page 2")
+    response.end()
 }
 
 //Public API

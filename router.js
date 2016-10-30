@@ -1,13 +1,16 @@
 "use strict"
 
-function route(pathname, handler) {
+function route(pathname, handler, response) {
     if (typeof handler[pathname] === "function") {
         console.log("Route to " + pathname)
-        return handler[pathname]()
+        return handler[pathname](response)
     }
     else {
         console.log("No request handler found for " + pathname)
-        return "404 Not found"
+        response.statusCode = 404
+        response.setHeader("Content-Type", "text/plain")
+        response.write("404 Not found")
+        response.end()
     }
 }
 

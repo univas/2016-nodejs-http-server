@@ -14,12 +14,7 @@ function start(route, handler) {
         console.log("Request for: " + request.url)
         
         let pathname = url.parse(request.url).pathname
-        let content = route(pathname, handler)
-        
-        response.statusCode = 200
-        response.setHeader("Content-Type", "text/plain")
-        response.write(content)
-        response.end()
+        route(pathname, handler, response)
     }
 }
 
