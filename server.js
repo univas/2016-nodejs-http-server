@@ -1,8 +1,8 @@
 "use strict"
 
-const http = require('http')
-const url = require('url')
-const hostname = 'localhost'
+const http = require("http")
+const url = require("url")
+const hostname = "localhost"
 const port = 9000
 
 function start(route, handler) {
@@ -11,14 +11,15 @@ function start(route, handler) {
         .listen(port, onStart)
     
     function onRequest(request, response) {
-        console.log('Request for: ' + request.url)
+        console.log("Request for: " + request.url)
         
-        let path = url.parse(request.url).path
-        route(path, handler)
+        let pathname = url.parse(request.url).pathname
+        route(pathname, handler)
         
         response.statusCode = 200
-        response.setHeader('Content-Type', 'text/plain')
-        response.end('Hello World!')
+        response.setHeader("Content-Type", "text/plain")
+        response.write("Hello World!")
+        response.end()
     }
 }
 
