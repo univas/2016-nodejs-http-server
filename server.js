@@ -22,7 +22,6 @@ function start(route, handler) {
     }
 }
 
-
 function onStart() {
     console.log(`Server started at http://${hostname}:${port}`)
 }
