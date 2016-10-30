@@ -1,15 +1,16 @@
 "use strict"
 
+const shellCommand = require("child_process").exec
+
 function page1() {
     console.log('Page 1 requested')
 
-    function sleep(milliSeconds) {
-        let startTime = new Date().getTime()
-        while(new Date().getTime() < startTime + milliSeconds);
-    }
-
-    sleep(10000)
-    return "Page 1"
+    let content = "empty"
+    shellCommand("ls -lah", function onReturn (error, stdout, stderr) {
+        content = stdout
+        console.log(stdout)
+    })
+    return content
 }
 
 function page2() {
