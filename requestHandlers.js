@@ -6,7 +6,7 @@ function page1(response) {
     console.log('Request handler "Page 1" was called')
 
     shellCommand("ls -lah", function onReturn(error, stdout, stderr) {
-        response.statusCode = 404
+        response.statusCode = 200
         response.setHeader("Content-Type", "text/plain")
         response.write(stdout)
         response.end()
