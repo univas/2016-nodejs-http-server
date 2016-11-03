@@ -1,14 +1,15 @@
 "use strict"
 
-const shellCommand = require("child_process").exec
+const fs = require('fs')
 
 function page1(response) {
     console.log('Request handler "Page 1" was called')
 
-    shellCommand("ls -lah", function onReturn(error, stdout, stderr) {
+    fs.readFile("./index.html", "utf-8", function onReturn(error, data) {
+        if(error) throw error
         response.statusCode = 200
-        response.setHeader("Content-Type", "text/plain")
-        response.write(stdout)
+        response.setHeader("Content-Type", "text/html")
+        response.write(data)
         response.end()
     })
 }
