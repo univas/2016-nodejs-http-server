@@ -18,13 +18,13 @@ function start(route, handler) {
         let chunkData = []
         
         request.on('data', function onData(chunk) {
-            console.log("chunk: " + chunk)
+            //console.log("chunk: " + chunk)
             chunkData.push(chunk)
         })
         
         request.on('end', function onEnd() {
             let postData = chunkData.join("")
-            route(pathname, handler, response)
+            route(pathname, handler, response, postData)
         })
         
     }

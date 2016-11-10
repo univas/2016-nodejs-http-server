@@ -2,8 +2,8 @@
 
 const fs = require('fs')
 
-function page1(response) {
-    console.log('Request handler "Page 1" was called')
+function login(response) {
+    console.log('Request handler "Login" was called')
 
     fs.readFile("./index.html", "utf-8", function onReturn(error, data) {
         if(error) throw error
@@ -14,14 +14,14 @@ function page1(response) {
     })
 }
 
-function page2(response) {
-    console.log('Request handler "Page 2" was called')
-    response.write("Page 2")
+function auth(response, postData) {
+    console.log('Request handler "Auth" was called')
+    response.write("You have sent: " + postData)
     response.end()
 }
 
 //Public API
 module.exports = {
-    'page1': page1,
-    'page2': page2
+    'login': login,
+    'auth': auth
 }
