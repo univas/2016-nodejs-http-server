@@ -1,6 +1,7 @@
 "use strict"
 
 const fs = require('fs')
+const queryString = require('querystring')
 
 function login(response) {
     console.log('Request handler "Login" was called')
@@ -16,7 +17,8 @@ function login(response) {
 
 function auth(response, postData) {
     console.log('Request handler "Auth" was called')
-    response.write("You have sent: " + postData)
+    let formData = queryString.parse(postData)
+    response.write("You have sent: " + JSON.stringify(formData))
     response.end()
 }
 
