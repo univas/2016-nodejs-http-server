@@ -12,9 +12,21 @@ function start(route, handler) {
     
     function onRequest(request, response) {
         console.log("Request for: " + request.url)
+        console.log("HTTP Method: " + request.method)
         
         let pathname = url.parse(request.url).pathname
-        route(pathname, handler, response)
+        let chunkData = []
+        
+        request.on('data', function onData(chunk) {
+            console.log("chunk: " + chunk)
+            chunkData.push(chunk)
+        })
+        
+        request.on('end', function onEnd() {
+            let postData = chunkData.join("")
+            route(pathname, handler, response)
+        })
+        
     }
 }
 
