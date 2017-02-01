@@ -1,0 +1,19 @@
+{
+  "name": "http-server",
+  "version": "1.0.0",
+  "description": "This is a simple HTTP Server example with NodeJS",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/univas/http-server.git"
+  },
+  "author": "Univas",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/univas/http-server/issues"
+  },
+  "homepage": "https://github.com/univas/http-server#readme"
+}

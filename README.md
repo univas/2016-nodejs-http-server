@@ -6,4 +6,4 @@ This is a simple HTTP Server example with NodeJS. To start that just execute the
 node index.js
 ```
 
-In case you have doubt why I'm not using semicolon is because I get inspiration from this talk: [Semicolons cannot save you!](https://www.youtube.com/watch?v=Qlr-FGbhKaI).
+In case you have doubt why I'm not using semicolon is because I got inspiration from this talk: [Semicolons cannot save you!](https://www.youtube.com/watch?v=Qlr-FGbhKaI).
